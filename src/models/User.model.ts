@@ -19,6 +19,7 @@ export default class User extends BaseEntity {
 
 
     @Column() name: string;
+    @Column({ nullable: true }) email: string;
     @Column() phoneNumber: string;
     @Column({ nullable: true }) bio?: string;
     @Column({ nullable: true }) stripeSubId?: string;
