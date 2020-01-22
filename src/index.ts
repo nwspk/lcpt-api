@@ -30,6 +30,8 @@ app.use(
             'http://127.0.0.1:8080',
             'http://localhost:3000',
             'http://localhost:3001',
+            'https://lcpt-website.netlify.com',
+            'https://lcpt-admin.netlify.com',
         ],
         credentials: true,
     })
