@@ -65,17 +65,6 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(clearSessionOnError); // for passport deserialization failures
 
-app.get('/', (req, res) => {
-    res.send({});
-})
-
-app.get('/logout', (req, res) => {
-    req.logout();
-    res.send({});
-});
-
-app.use(express.static('public'));
-
 
 app.use('/', expressSmsAuth(
     async function (verification: any, req: any, res: any) {
@@ -98,6 +87,26 @@ app.use('/', expressSmsAuth(
     },
     ['+447480833086']
 ));
+
+
+app.use((req, res, next) => {
+    if (req.user) {
+        next();
+    } else {
+        res.status(403).send(`Not Authed`);
+    }
+});
+
+app.get('/me', (req, res) => {
+    res.send(req.user);
+})
+
+app.get('/logout', (req, res) => {
+    req.logout();
+    res.send({});
+});
+
+app.use(express.static('public'));
 
 app.use('/', router)
 
