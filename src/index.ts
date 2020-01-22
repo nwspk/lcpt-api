@@ -18,6 +18,8 @@ import User from './models/User.model'
 import { config } from './config'
 import { passport, clearSessionOnError } from './util/auth';
 
+import publicApi from './routes/publicApi';
+
 const app = express()
 
 app.use(logger('tiny'))
@@ -29,6 +31,7 @@ app.use(
             'http://lcpt.local:8080',
             'http://127.0.0.1:8080',
             'http://localhost:3000',
+            'http://localhost:5000',
             'http://localhost:3001',
             'https://lcpt-website.netlify.com',
             'https://lcpt-admin.netlify.com',
@@ -65,6 +68,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 app.use(clearSessionOnError); // for passport deserialization failures
 
+app.use('/api', publicApi);
 
 app.use('/', expressSmsAuth(
     async function (verification: any, req: any, res: any) {
@@ -87,7 +91,6 @@ app.use('/', expressSmsAuth(
     },
     ['+447480833086']
 ));
-
 
 app.use((req, res, next) => {
     if (req.user) {
