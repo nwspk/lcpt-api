@@ -57,7 +57,7 @@ const convictConfig = convict({
       doc: 'Redis url',
       format: String,
       default: redisDefault,
-      env: 'REDIS_URI',
+      env: 'REDIS_URL',
     },
   },
   twilio: {
