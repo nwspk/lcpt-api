@@ -84,7 +84,7 @@ router.put(
             body.receivedFellowshipAt = new Date();
         }
         Object.assign(record, body);
-        if ((record.campus || {}).id !== newCampusId) {
+        if ((record.campus || {}).id !== newCampusId && (req.user as User).isAdmin) {
             const newCampus = await Campus.findOneOrFail(newCampusId);
             record.campus = newCampus;
         }
