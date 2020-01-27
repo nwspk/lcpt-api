@@ -13,6 +13,7 @@
     "baseUrl": ".",
     "lib": [
       "es7",
+      "ESNext"
     ],
     "paths": {
       "src/*": [
