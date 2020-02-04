@@ -33,6 +33,7 @@ app.use(
             'http://localhost:3000',
             'http://localhost:5000',
             'http://localhost:3001',
+            'https://screens.simmsreeve.com',
             'https://lcpt-website.netlify.com',
             'https://lcpt-admin.netlify.com',
         ],
