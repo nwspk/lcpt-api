@@ -3,6 +3,7 @@ import expressAsyncHandler = require('express-async-handler');
 import Campus from 'src/models/Campus.model';
 import ical from "ical";
 import requestPromise = require('request-promise-native');
+import marked from 'marked';
 
 const router = Router()
 
@@ -33,6 +34,11 @@ async function getEvents(campuses: Campus[]) {
         console.log(`Reading events from cache`);
         allEvents = eventsCache.events;
     }
+
+    allEvents = allEvents.map(event => {
+        event.description = marked(event.description);
+        return event;
+    });
 
     const now = new Date();
     const pastIndex = allEvents.findIndex(ev => ev.end < now);

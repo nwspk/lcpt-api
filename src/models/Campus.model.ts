@@ -18,9 +18,9 @@ export default class Campus extends BaseEntity {
     @UpdateDateColumn() updatedAt: Date
 
     @Column() name: string;
-    @Column() address: string;
+    @Column({ nullable: true }) address: string;
     @Column() webUrl: string;
-    @Column() calendarUrl: string;
+    @Column({ nullable: true }) calendarUrl: string;
     @ManyToOne(type => User) dean: User;
     @OneToMany(type => User, u => u.campus) users: User[];
 }
