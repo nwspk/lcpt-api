@@ -54,6 +54,37 @@ async function getEvents(campuses: Campus[]) {
 router.get(
     '/college.json',
     expressAsyncHandler(async (req: Request, res: Response) => {
+        const campuses = await Campus.find({ relations: ['dean'] });
+
+        res.send({ campuses });
+    })
+);
+
+router.get(
+    '/upcomingEvents.json',
+    expressAsyncHandler(async (req: Request, res: Response) => {
+        const campuses = await Campus.find();
+
+        const events = await getEvents(campuses);
+
+        res.send(events.futureEvents.reverse());
+    })
+);
+
+router.get(
+    '/pastEvents.json',
+    expressAsyncHandler(async (req: Request, res: Response) => {
+        const campuses = await Campus.find();
+
+        const events = await getEvents(campuses);
+
+        res.send(events.pastEvents);
+    })
+);
+
+router.get(
+    '/college.json',
+    expressAsyncHandler(async (req: Request, res: Response) => {
         const [
             campuses
         ] = await Promise.all([
