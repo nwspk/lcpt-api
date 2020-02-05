@@ -20,7 +20,7 @@ export default class Campus extends BaseEntity {
     @Column() name: string;
     @Column({ nullable: true }) address: string;
     @Column() webUrl: string;
-    @Column({ nullable: true }) calendarUrl: string;
+    @Column({ nullable: true }) calendarUrl?: string;
     @ManyToOne(type => User) dean: User;
     @OneToMany(type => User, u => u.campus) users: User[];
 }
