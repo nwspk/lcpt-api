@@ -36,6 +36,7 @@ app.use(
             'https://screens.simmsreeve.com',
             'https://lcpt-website.netlify.com',
             'https://lcpt-admin.netlify.com',
+            'https://nwspk.github.io',
         ],
         credentials: true,
     })
