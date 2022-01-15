@@ -47,7 +47,7 @@
     "express-sms-auth": "^1.0.1",
     "ical": "^0.6.0",
     "lodash": "^4.17.19",
-    "marked": "^0.8.0",
+    "marked": "^4.0.10",
     "morgan": "^1.9.1",
     "passport": "^0.4.1",
     "pg": "^7.17.1",
